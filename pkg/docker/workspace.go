@@ -87,6 +87,16 @@ func (wo *WorkSpace) Stop(containerID string) error {
 	return nil
 }
 
-func (wo *WorkSpace) Destroy() {
+func (wo *WorkSpace) Destroy(containerID string) error {
 	// ToDo: Docker コンテナを削除
+	opt := types.ContainerRemoveOptions{
+		RemoveVolumes: false,
+		Force:         true,
+	}
+	err := cli.ContainerRemove(context.Background(), containerID, opt)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
