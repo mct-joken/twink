@@ -69,7 +69,6 @@ func (wo *WorkSpace) Create(containerName string, imageName string, port string)
 }
 
 func (wo *WorkSpace) Start(containerID string) error {
-	// ToDo: Docker コンテナをスタート
 	err := cli.ContainerStart(context.Background(), containerID, types.ContainerStartOptions{})
 	if err != nil {
 		return err
@@ -78,7 +77,6 @@ func (wo *WorkSpace) Start(containerID string) error {
 }
 
 func (wo *WorkSpace) Stop(containerID string) error {
-	// ToDo: Docker コンテナを停止
 	// コンテナ終了のシグナルを送っても停止しない場合は、10秒後に強制停止する
 	err := cli.ContainerStop(context.Background(), containerID, func() *time.Duration { t := 1 * time.Second; return &t }())
 	if err != nil {
@@ -87,6 +85,10 @@ func (wo *WorkSpace) Stop(containerID string) error {
 	return nil
 }
 
-func (wo *WorkSpace) Destroy() {
-	// ToDo: Docker コンテナを削除
+func (wo *WorkSpace) Destroy(containerID string) error {
+	err := cli.ContainerRemove(context.Background(), containerID, types.ContainerRemoveOptions{})
+	if err != nil {
+		return err
+	}
+	return nil
 }
