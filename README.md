@@ -10,15 +10,15 @@ WebAPIでDockerを操作できるサーバー実装
 ```json
 {
   "name": "コンテナ名",
-  "image": "イメージ名"
+  "image": "イメージ名",
+  "ssh-port": 33569
 }
 ```
 
 #### レスポンス
 ```json
 {
-  "id": "コンテナID",
-  "ssh-port": 33569
+  "id": "コンテナID"
 }
 ```
 
@@ -43,5 +43,5 @@ WebAPIでDockerを操作できるサーバー実装
 
 
 ## Author / License
-(C) 2022 松江高専情報科学研究部, Tatsuto "laminne" Yamamoto
+(C) 2022 松江高専情報科学研究部, Tatsuto "laminne" Yamamoto  
 MIT License
