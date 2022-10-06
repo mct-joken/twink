@@ -11,7 +11,7 @@ WebAPIでDockerを操作できるサーバー実装
 {
   "name": "コンテナ名",
   "image": "イメージ名",
-  "ssh-port": 33569
+  "ssh-port": "33569"
 }
 ```
 
@@ -25,6 +25,7 @@ WebAPIでDockerを操作できるサーバー実装
 ---
 
 ### POST /container/{:id}
+コンテナを起動します
 #### レスポンス
 ```json
 {
@@ -33,6 +34,15 @@ WebAPIでDockerを操作できるサーバー実装
 ```
 
 ### DELETE /container/{:id}
+#### レスポンス
+
+```json
+{
+  "status": "ステータス"
+}
+```
+
+### DELETE /container/{:id}/destroy
 #### レスポンス
 
 ```json
