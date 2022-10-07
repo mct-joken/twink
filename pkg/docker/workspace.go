@@ -86,7 +86,11 @@ func (wo *WorkSpace) Stop(containerID string) error {
 }
 
 func (wo *WorkSpace) Destroy(containerID string) error {
-	err := cli.ContainerRemove(context.Background(), containerID, types.ContainerRemoveOptions{})
+	opt := types.ContainerRemoveOptions{
+		RemoveVolumes: false,
+		Force:         true,
+	}
+	err := cli.ContainerRemove(context.Background(), containerID, opt)
 	if err != nil {
 		return err
 	}
